@@ -9,5 +9,4 @@ sealed interface SplashStatus {
     data object NoConnection : SplashStatus
     data object ServerError : SplashStatus
     data object UnsafeDevice : SplashStatus
-
 }

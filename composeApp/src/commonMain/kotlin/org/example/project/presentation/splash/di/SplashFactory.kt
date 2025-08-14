@@ -11,7 +11,8 @@ import org.example.project.presentation.splash.SplashViewModel
  * Cambia el [scenario] para probar distintos flujos.
  */
 object SplashFactory {
-    fun create(scenario: SplashStatus = SplashStatus.Authenticated): SplashViewModel {
+    // Cambiado a Unauthenticated para mostrar el flujo de login por defecto
+    fun create(scenario: SplashStatus = SplashStatus.Unauthenticated): SplashViewModel {
         val remote = FakeAppStatusRemoteDataSource(scenario)
         val repo = AppStatusRepositoryImpl(remote)
         val useCase = CheckSplashStatusUseCase(repo)
