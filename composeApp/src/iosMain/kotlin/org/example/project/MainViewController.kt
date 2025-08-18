@@ -3,8 +3,9 @@ package org.example.project
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.window.ComposeUIViewController
+import org.example.project.presentation.AppRoot
 import platform.UIKit.UIViewController
 import org.example.project.presentation.splash.SplashRoot
 
 fun MainViewController(): UIViewController =
-    ComposeUIViewController { MaterialTheme { SplashRoot() } }
+    ComposeUIViewController { MaterialTheme { AppRoot()  } }
