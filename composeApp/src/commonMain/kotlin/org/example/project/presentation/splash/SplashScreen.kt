@@ -16,6 +16,7 @@ import org.example.project.domain.model.SplashStatus
 import org.example.project.presentation.splash.di.SplashFactory
 import org.example.project.presentation.splash.SplashState
 import org.example.project.presentation.splash.SplashViewModel
+import org.example.project.presentation.splash.SplashEffect
 
 @Composable
 fun SplashScreen(scenario: SplashStatus = SplashStatus.Unauthenticated) {
@@ -24,7 +25,26 @@ fun SplashScreen(scenario: SplashStatus = SplashStatus.Unauthenticated) {
     val state by vm.state.collectAsState()
 
     // Corre una vez por instancia de VM (o cuando cambie el 'scenario')
-    LaunchedEffect(vm) { vm.checkStatus() }
+    LaunchedEffect(vm) { 
+        vm.checkStatus()
+        // Observa efectos y navega según corresponda
+        vm.effects.collect { effect ->
+            when (effect) {
+                SplashEffect.GoToLogin -> {
+                    // TODO: Implementar navegación al login
+                    println("Navegando al login...")
+                }
+                SplashEffect.GoToHome -> {
+                    // TODO: Implementar navegación al home
+                    println("Navegando al home...")
+                }
+                else -> {
+                    // Otros efectos
+                    println("Efecto recibido: $effect")
+                }
+            }
+        }
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
